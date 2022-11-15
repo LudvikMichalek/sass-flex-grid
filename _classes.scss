@@ -13,7 +13,7 @@
 }
 
 @each $label, $map in $sfg-breakpoints {
-  @include mq(map-get($map, min-width)) {
+  @include mq-class(map-get($map, min-width), map-get($map, max-width)) {
     .#{$sfg-prefix}row {
 			@include row-gutter(map-get($map, gutter));
 

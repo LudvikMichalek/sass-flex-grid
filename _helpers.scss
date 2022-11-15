@@ -7,10 +7,17 @@
 
 @mixin mq($mq-breakpoint) {
 	@if map-has-key($sfg-breakpoints, $mq-breakpoint) {
-    $mq-breakpoint: map-deep-get($sfg-breakpoints, $mq-breakpoint, "min-width");
-	}
+		$mq-breakpoint-min-width: map-deep-get($sfg-breakpoints, $mq-breakpoint, "min-width");
+		$mq-breakpoint-max-width: map-deep-get($sfg-breakpoints, $mq-breakpoint, "max-width");
 
-	@media screen and (min-width: #{$mq-breakpoint}) {
-	  @content;
+		@media screen and (min-width: #{$mq-breakpoint-min-width}) and (max-width: #{$mq-breakpoint-max-width}) {
+			@content;
+		}
+	}
+}
+
+@mixin mq-class($mq-breakpoint-min-width, $mq-breakpoint-max-width) {
+	@media screen and (min-width: #{$mq-breakpoint-min-width}) and (max-width: #{$mq-breakpoint-max-width}) {
+		@content;
 	}
 }
