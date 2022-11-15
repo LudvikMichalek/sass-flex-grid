@@ -41,11 +41,11 @@
 		}
 
     @for $i from 1 through map-get($map, columns) {
-      .#{$sfg-prefix}col-#{map-get($map, name)}-#{$i} {
+      .#{$sfg-prefix}col-#{$i}-#{map-get($map, name)} {
 				@include col(math.div($i, map-get($map, columns)), map-get($map, gutter));
       }
 
-      .#{$sfg-prefix}col-#{map-get($map, name)}-offset-#{$i} {
+      .#{$sfg-prefix}col-offset-#{$i}-#{map-get($map, name)} {
 				@include offset(math.div($i, map-get($map, columns)));
       }
     }
