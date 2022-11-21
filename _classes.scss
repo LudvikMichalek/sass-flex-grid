@@ -12,8 +12,7 @@
   flex-direction: column-reverse;
 }
 
-@each $label, $map in $sfg-breakpoints {
-  @include mq-class(map-get($map, min-width), map-get($map, max-width)) {
+@mixin generate-classes($map, $separator, $name) {
     .#{$sfg-prefix}row {
 			@include row-gutter(map-get($map, gutter));
 
@@ -23,7 +22,7 @@
 			}
 		}
 
-		[class^='#{$sfg-prefix}col-'], [class*='#{$sfg-prefix}col-'] {
+		[class^='#{$sfg-prefix}col#{$separator}'], [class*='#{$sfg-prefix}col#{$separator}'] {
 			@include col-gutter(map-get($map, gutter));
 
 			.no-gutter & {
@@ -32,7 +31,7 @@
 			}
 		}
 
-		.#{$sfg-prefix}col-#{map-get($map, name)} {
+		.#{$sfg-prefix}col#{$separator}#{$name} {
 			flex-grow: 1;
 			flex-basis: 0;
 			max-width: 100%;
@@ -41,53 +40,66 @@
 		}
 
     @for $i from 1 through map-get($map, columns) {
-      .#{$sfg-prefix}col-#{$i}-#{map-get($map, name)} {
+      .#{$sfg-prefix}col-#{$i}#{$separator}#{$name} {
 				@include col(math.div($i, map-get($map, columns)), map-get($map, gutter));
       }
 
-      .#{$sfg-prefix}col-offset-#{$i}-#{map-get($map, name)} {
+      .#{$sfg-prefix}col-offset-#{$i}#{$separator}#{$name} {
 				@include offset(math.div($i, map-get($map, columns)));
       }
     }
 
-    .#{$sfg-prefix}start-#{map-get($map, name)} {
+    .#{$sfg-prefix}start#{$separator}#{$name} {
 			@include start();
     }
 
-    .#{$sfg-prefix}center-#{map-get($map, name)} {
+    .#{$sfg-prefix}center#{$separator}#{$name} {
       @include center();
     }
 
-    .#{$sfg-prefix}end-#{map-get($map, name)} {
+    .#{$sfg-prefix}end#{$separator}#{$name} {
       @include end();
     }
 
-    .#{$sfg-prefix}top-#{map-get($map, name)} {
+    .#{$sfg-prefix}top#{$separator}#{$name} {
       @include top();
     }
 
-    .#{$sfg-prefix}middle-#{map-get($map, name)} {
+    .#{$sfg-prefix}middle#{$separator}#{$name} {
       @include middle();
     }
 
-    .#{$sfg-prefix}bottom-#{map-get($map, name)} {
+    .#{$sfg-prefix}bottom#{$separator}#{$name} {
       @include bottom();
     }
 
-    .#{$sfg-prefix}around-#{map-get($map, name)} {
+    .#{$sfg-prefix}around#{$separator}#{$name} {
       @include around();
     }
 
-    .#{$sfg-prefix}between-#{map-get($map, name)} {
+    .#{$sfg-prefix}between#{$separator}#{$name} {
       @include between();
     }
 
-    .#{$sfg-prefix}first-#{map-get($map, name)} {
+    .#{$sfg-prefix}first#{$separator}#{$name} {
 			@include first();
     }
 
-    .#{$sfg-prefix}last-#{map-get($map, name)} {
+    .#{$sfg-prefix}last#{$separator}#{$name} {
       @include last();
     }
-  }
+}
+
+@each $label, $map in $sfg-breakpoints {
+	@if map-get($map, name) == default {
+		// default classes
+		@include generate-classes($map, '', '');
+	} @else {
+		// media query classes
+		@include mq-class(map-get($map, min-width), map-get($map, max-width)) {
+			@if map-get($map, name) != default {
+				@include generate-classes($map, '-', map-get($map, name));
+			}
+		}
+	}
 }
