@@ -6,7 +6,7 @@ $sfg-default-grid-breakpoints: (
 		columns: 12,
 		gutter: 24px
 	),
-	desktopLarge: (
+	desktop-large: (
 		name: desktop-large,
 		columns: 12,
 		gutter: 24px,
@@ -34,7 +34,7 @@ $sfg-default-grid-breakpoints: (
 		min-width: 0,
 		max-width: 768px - 1px 
 	),
-	mobileSmall: (
+	mobile-small: (
 		name: mobile-small,
 		columns: 12,
 		gutter: 16px,
