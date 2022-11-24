@@ -5,13 +5,15 @@
   @return $map;
 }
 
-@mixin mq($mq-breakpoint) {
-	@if map-has-key($sfg-breakpoints, $mq-breakpoint) {
-		$mq-breakpoint-min-width: map-deep-get($sfg-breakpoints, $mq-breakpoint, "min-width");
-		$mq-breakpoint-max-width: map-deep-get($sfg-breakpoints, $mq-breakpoint, "max-width");
+@mixin mq($breakpoint-list) {
+	@each $mq-breakpoint in $breakpoint-list {
+		@if map-has-key($sfg-breakpoints, $mq-breakpoint) {
+			$mq-breakpoint-min-width: map-deep-get($sfg-breakpoints, $mq-breakpoint, "min-width");
+			$mq-breakpoint-max-width: map-deep-get($sfg-breakpoints, $mq-breakpoint, "max-width");
 
-		@media screen and (min-width: #{$mq-breakpoint-min-width}) and (max-width: #{$mq-breakpoint-max-width}) {
-			@content;
+			@media screen and (min-width: #{$mq-breakpoint-min-width}) and (max-width: #{$mq-breakpoint-max-width}) {
+				@content;
+			}
 		}
 	}
 }
