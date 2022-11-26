@@ -79,3 +79,19 @@
 @mixin last {
   order: 1;
 }
+
+@mixin hide {
+	display: none !important;
+}
+
+@mixin show {
+	display: block !important;
+}
+
+@mixin show-inline {
+	display: inline-block !important;
+}
+
+@mixin show-flex {
+	display: flex !important;
+}

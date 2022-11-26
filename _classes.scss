@@ -50,7 +50,7 @@
     }
 
     .#{$sfg-prefix}start#{$separator}#{$name} {
-			@include start();
+		@include start();
     }
 
     .#{$sfg-prefix}center#{$separator}#{$name} {
@@ -82,11 +82,27 @@
     }
 
     .#{$sfg-prefix}first#{$separator}#{$name} {
-			@include first();
+		@include first();
     }
 
     .#{$sfg-prefix}last#{$separator}#{$name} {
       @include last();
+    }
+
+    .#{$sfg-prefix}hide#{$separator}#{$name} {
+      @include hide();
+    }
+
+    .#{$sfg-prefix}show#{$separator}#{$name} {
+      @include show();
+    }
+
+    .#{$sfg-prefix}show-inline#{$separator}#{$name} {
+      @include show-inline();
+    }
+
+    .#{$sfg-prefix}show-flex#{$separator}#{$name} {
+      @include show-flex();
     }
 }
 
