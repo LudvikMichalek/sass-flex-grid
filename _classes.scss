@@ -22,7 +22,7 @@
 			}
 		}
 
-		[class^='#{$sfg-prefix}col#{$separator}'] {
+		[class^='#{$sfg-prefix}col#{$separator}'], [class*='#{$sfg-prefix}col#{$separator}'] {
 			@include col-gutter(map-get($map, gutter));
 
 			.no-gutter & {
