@@ -1,20 +1,25 @@
+@use "sass:map";
+@use "defaults";
+@use "helpers";
+@use "mixins";
+
 @use "sass:math";
 
-.#{$sfg-prefix}row-span, .#{$sfg-prefix}row {
-	@include row();
+.#{defaults.$sfg-prefix}row-span, .#{defaults.$sfg-prefix}row {
+	@include mixins.row();
 
-	&.#{$sfg-prefix}reverse {
-		@include row-reverse();
+	&.#{defaults.$sfg-prefix}reverse {
+		@include mixins.row-reverse();
 	}
 }
 
-.#{$sfg-prefix}col.#{$sfg-prefix}reverse {
+.#{defaults.$sfg-prefix}col.#{defaults.$sfg-prefix}reverse {
   flex-direction: column-reverse;
 }
 
 @mixin generate-classes($map, $separator, $name) {
-    .#{$sfg-prefix}row {
-			@include row-gutter(map-get($map, gutter));
+    .#{defaults.$sfg-prefix}row {
+			@include mixins.row-gutter(map.get($map, gutter));
 
 			&.no-gutter {
 				margin-right: 0;
@@ -22,8 +27,8 @@
 			}
 		}
 
-		[class^='#{$sfg-prefix}col-'], [class*='#{$sfg-prefix}col-'] {
-			@include col-gutter(map-get($map, gutter));
+		[class^='#{defaults.$sfg-prefix}col-'], [class*='#{defaults.$sfg-prefix}col-'] {
+			@include mixins.col-gutter(map.get($map, gutter));
 
 			.no-gutter & {
 				padding-right: 0;
@@ -31,7 +36,7 @@
 			}
 		}
 
-		.#{$sfg-prefix}col#{$separator}#{$name} {
+		.#{defaults.$sfg-prefix}col#{$separator}#{$name} {
 			flex-grow: 1;
 			flex-basis: 0;
 			max-width: 100%;
@@ -39,82 +44,82 @@
 			box-flex: 0;
 		}
 
-    @for $i from 1 through map-get($map, columns) {
-      .#{$sfg-prefix}col-#{$i}#{$separator}#{$name} {
-				@include col(math.div($i, map-get($map, columns)), map-get($map, gutter));
+    @for $i from 1 through map.get($map, columns) {
+      .#{defaults.$sfg-prefix}col-#{$i}#{$separator}#{$name} {
+				@include mixins.col(math.div($i, map.get($map, columns)), map.get($map, gutter));
       }
 
-      .#{$sfg-prefix}col-offset-#{$i}#{$separator}#{$name} {
-				@include offset(math.div($i, map-get($map, columns)));
+      .#{defaults.$sfg-prefix}col-offset-#{$i}#{$separator}#{$name} {
+				@include mixins.offset(math.div($i, map.get($map, columns)));
       }
     }
 
-    .#{$sfg-prefix}start#{$separator}#{$name} {
-		@include start();
+    .#{defaults.$sfg-prefix}start#{$separator}#{$name} {
+		@include mixins.start();
     }
 
-    .#{$sfg-prefix}center#{$separator}#{$name} {
-      @include center();
+    .#{defaults.$sfg-prefix}center#{$separator}#{$name} {
+      @include mixins.center();
     }
 
-    .#{$sfg-prefix}end#{$separator}#{$name} {
-      @include end();
+    .#{defaults.$sfg-prefix}end#{$separator}#{$name} {
+      @include mixins.end();
     }
 
-    .#{$sfg-prefix}top#{$separator}#{$name} {
-      @include top();
+    .#{defaults.$sfg-prefix}top#{$separator}#{$name} {
+      @include mixins.top();
     }
 
-    .#{$sfg-prefix}middle#{$separator}#{$name} {
-      @include middle();
+    .#{defaults.$sfg-prefix}middle#{$separator}#{$name} {
+      @include mixins.middle();
     }
 
-    .#{$sfg-prefix}bottom#{$separator}#{$name} {
-      @include bottom();
+    .#{defaults.$sfg-prefix}bottom#{$separator}#{$name} {
+      @include mixins.bottom();
     }
 
-    .#{$sfg-prefix}around#{$separator}#{$name} {
-      @include around();
+    .#{defaults.$sfg-prefix}around#{$separator}#{$name} {
+      @include mixins.around();
     }
 
-    .#{$sfg-prefix}between#{$separator}#{$name} {
-      @include between();
+    .#{defaults.$sfg-prefix}between#{$separator}#{$name} {
+      @include mixins.between();
     }
 
-    .#{$sfg-prefix}first#{$separator}#{$name} {
-		@include first();
+    .#{defaults.$sfg-prefix}first#{$separator}#{$name} {
+		@include mixins.first();
     }
 
-    .#{$sfg-prefix}last#{$separator}#{$name} {
-      @include last();
+    .#{defaults.$sfg-prefix}last#{$separator}#{$name} {
+      @include mixins.last();
     }
 
-    .#{$sfg-prefix}hide#{$separator}#{$name} {
-      @include hide();
+    .#{defaults.$sfg-prefix}hide#{$separator}#{$name} {
+      @include mixins.hide();
     }
 
-    .#{$sfg-prefix}show#{$separator}#{$name} {
-      @include show();
+    .#{defaults.$sfg-prefix}show#{$separator}#{$name} {
+      @include mixins.show();
     }
 
-    .#{$sfg-prefix}show-inline#{$separator}#{$name} {
-      @include show-inline();
+    .#{defaults.$sfg-prefix}show-inline#{$separator}#{$name} {
+      @include mixins.show-inline();
     }
 
-    .#{$sfg-prefix}show-flex#{$separator}#{$name} {
-      @include show-flex();
+    .#{defaults.$sfg-prefix}show-flex#{$separator}#{$name} {
+      @include mixins.show-flex();
     }
 }
 
-@each $label, $map in $sfg-breakpoints {
-	@if map-get($map, name) == default {
+@each $label, $map in defaults.$sfg-breakpoints {
+	@if map.get($map, name) == default {
 		// default classes
 		@include generate-classes($map, '', '');
 	} @else {
 		// media query classes
-		@include mq-class(map-get($map, min-width), map-get($map, max-width)) {
-			@if map-get($map, name) != default {
-				@include generate-classes($map, '-', map-get($map, name));
+		@include helpers.mq-class(map.get($map, min-width), map.get($map, max-width)) {
+			@if map.get($map, name) != default {
+				@include generate-classes($map, '-', map.get($map, name));
 			}
 		}
 	}

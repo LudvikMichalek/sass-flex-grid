@@ -1,11 +1,12 @@
+@use "sass:string";
 @use "sass:math";
 
 @mixin col($ratios: 1, $gutter: 0) {
   box-sizing: border-box;
   flex: 0 0 auto;
   position: relative;
-  flex-basis: $ratios * 100 + unquote("%");
-  max-width: $ratios * 100 + unquote("%");
+  flex-basis: $ratios * 100 + string.unquote("%");
+  max-width: $ratios * 100 + string.unquote("%");
 }
 
 @mixin col-gutter($gutter: 0) {

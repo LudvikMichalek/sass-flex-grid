@@ -1,3 +1,4 @@
+@use "sass:meta";
 $sfg-default-prefix: '';
 
 $sfg-default-grid-breakpoints: (
@@ -44,11 +45,11 @@ $sfg-default-grid-breakpoints: (
 );
 
 $sfg-breakpoints: $sfg-default-grid-breakpoints;
-@if global-variable-exists(grid-breakpoints) {
+@if meta.global-variable-exists(grid-breakpoints) {
 	$sfg-breakpoints: $grid-breakpoints;
 }
 
 $sfg-prefix: $sfg-default-prefix;
-@if global-variable-exists(grid-prefix) {
+@if meta.global-variable-exists(grid-prefix) {
 	$sfg-prefix: $grid-prefix;
 }
