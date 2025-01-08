@@ -27,6 +27,10 @@
 		}
 	}
 
+    .#{defaults.$sfg-prefix}row-reverse#{$separator}#{$name} {
+		@include mixins.row-reverse();
+	}
+
 	[class^='#{defaults.$sfg-prefix}col-'], [class*='#{defaults.$sfg-prefix}col-'] {
 		@include mixins.col-gutter(map.get($map, gutter));
 

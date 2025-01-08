@@ -22,6 +22,10 @@
   margin-left: 0;
 }
 
+.row-reverse {
+  flex-direction: row-reverse;
+}
+
 [class^=col-], [class*=col-] {
   padding-right: 12px;
   padding-left: 12px;
@@ -276,6 +280,9 @@
     margin-right: 0;
     margin-left: 0;
   }
+  .row-reverse-desktop-large {
+    flex-direction: row-reverse;
+  }
   [class^=col-], [class*=col-] {
     padding-right: 12px;
     padding-left: 12px;
@@ -490,6 +497,9 @@
   .row.no-gutter {
     margin-right: 0;
     margin-left: 0;
+  }
+  .row-reverse-desktop {
+    flex-direction: row-reverse;
   }
   [class^=col-], [class*=col-] {
     padding-right: 12px;
@@ -706,6 +716,9 @@
     margin-right: 0;
     margin-left: 0;
   }
+  .row-reverse-tablet {
+    flex-direction: row-reverse;
+  }
   [class^=col-], [class*=col-] {
     padding-right: 11px;
     padding-left: 11px;
@@ -921,6 +934,9 @@
     margin-right: 0;
     margin-left: 0;
   }
+  .row-reverse-mobile {
+    flex-direction: row-reverse;
+  }
   [class^=col-], [class*=col-] {
     padding-right: 9px;
     padding-left: 9px;
@@ -1135,6 +1151,9 @@
   .row.no-gutter {
     margin-right: 0;
     margin-left: 0;
+  }
+  .row-reverse-mobile-small {
+    flex-direction: row-reverse;
   }
   [class^=col-], [class*=col-] {
     padding-right: 8px;
