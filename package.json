@@ -20,14 +20,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aharris/sass-flex-grid.git"
+    "url": "git+https://github.com/lumikcz/sass-flex-grid.git"
   },
   "author": "ashtonharris.me@gmail.com",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/aharris/sass-flex-grid/issues"
+    "url": "https://github.com/lumikcz/sass-flex-grid/issues"
   },
-  "homepage": "https://github.com/aharris/sass-flex-grid#readme",
+  "homepage": "https://github.com/lumikcz/sass-flex-grid#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
