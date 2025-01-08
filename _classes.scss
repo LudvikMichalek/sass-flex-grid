@@ -19,38 +19,38 @@
 
 @mixin generate-classes($map, $separator, $name) {
     .#{defaults.$sfg-prefix}row {
-			@include mixins.row-gutter(map.get($map, gutter));
+		@include mixins.row-gutter(map.get($map, gutter));
 
-			&.no-gutter {
-				margin-right: 0;
-				margin-left: 0;
-			}
+		&.no-gutter {
+			margin-right: 0;
+			margin-left: 0;
 		}
+	}
 
-		[class^='#{defaults.$sfg-prefix}col-'], [class*='#{defaults.$sfg-prefix}col-'] {
-			@include mixins.col-gutter(map.get($map, gutter));
+	[class^='#{defaults.$sfg-prefix}col-'], [class*='#{defaults.$sfg-prefix}col-'] {
+		@include mixins.col-gutter(map.get($map, gutter));
 
-			.no-gutter & {
-				padding-right: 0;
-				padding-left: 0;
-			}
+		.no-gutter & {
+			padding-right: 0;
+			padding-left: 0;
 		}
+	}
 
-		.#{defaults.$sfg-prefix}col#{$separator}#{$name} {
-			flex-grow: 1;
-			flex-basis: 0;
-			max-width: 100%;
-			box-sizing: border-box;
-			box-flex: 0;
-		}
+	.#{defaults.$sfg-prefix}col#{$separator}#{$name} {
+		flex-grow: 1;
+		flex-basis: 0;
+		max-width: 100%;
+		box-sizing: border-box;
+		box-flex: 0;
+	}
 
     @for $i from 1 through map.get($map, columns) {
       .#{defaults.$sfg-prefix}col-#{$i}#{$separator}#{$name} {
-				@include mixins.col(math.div($i, map.get($map, columns)), map.get($map, gutter));
+		@include mixins.col(math.div($i, map.get($map, columns)), map.get($map, gutter));
       }
 
       .#{defaults.$sfg-prefix}col-offset-#{$i}#{$separator}#{$name} {
-				@include mixins.offset(math.div($i, map.get($map, columns)));
+		@include mixins.offset(math.div($i, map.get($map, columns)));
       }
     }
 
