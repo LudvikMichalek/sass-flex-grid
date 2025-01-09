@@ -1,0 +1,40 @@
+@use 'grid-config' as config;
+@use '../../index' as grid with (
+	$grid-breakpoints: config.$grid-breakpoints
+);
+@use '../../helpers';
+
+// Expose grid mixins and functions
+@forward '../../helpers' show mq, getGutterForBreakpoint;
+
+.container {
+	margin: 0 auto;
+	box-sizing: border-box;
+
+	@include helpers.mq(desktop-large) {
+		max-width: 1200px;
+	}
+	
+	@include helpers.mq(desktop) {
+		max-width: 960px;
+	}
+	
+	@include helpers.mq(tablet) {
+		max-width: 740px;
+	}
+	
+	@include helpers.mq(mobile) {
+		max-width: 600px;
+		
+		$sidePadding: calc(helpers.getGutterForBreakpoint(mobile) / 2);
+		padding-left: $sidePadding;
+		padding-right: $sidePadding;
+	}
+	
+	@include helpers.mq(mobile-small) {
+		$sidePadding: calc(helpers.getGutterForBreakpoint(mobile-small) / 2);
+		padding-left: $sidePadding;
+		padding-right: $sidePadding;		
+	}
+
+}

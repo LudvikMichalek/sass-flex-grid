@@ -1,0 +1,9 @@
+@use "grid";
+
+body {
+	background: white;
+
+	@include grid.mq(mobile-tiny) {
+		background: pink;
+	}
+}
