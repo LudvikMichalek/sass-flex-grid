@@ -1,7 +1,5 @@
-@use "sass:meta";
-$sfg-default-prefix: '';
-
-$sfg-default-grid-breakpoints: (
+$sfg-prefix: '' !default;
+$sfg-breakpoints: (
 	default: (
 		name: default,
 		columns: 12,
@@ -42,14 +40,4 @@ $sfg-default-grid-breakpoints: (
 		min-width: 0,
 		max-width: 400px
 	)
-);
-
-$sfg-breakpoints: $sfg-default-grid-breakpoints;
-@if meta.global-variable-exists(grid-breakpoints) {
-	$sfg-breakpoints: $grid-breakpoints;
-}
-
-$sfg-prefix: $sfg-default-prefix;
-@if meta.global-variable-exists(grid-prefix) {
-	$sfg-prefix: $grid-prefix;
-}
+) !default;

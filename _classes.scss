@@ -1,9 +1,8 @@
 @use "sass:map";
+@use "sass:math";
 @use "defaults";
 @use "helpers";
 @use "mixins";
-
-@use "sass:math";
 
 .#{defaults.$sfg-prefix}row-span, .#{defaults.$sfg-prefix}row {
 	@include mixins.row();

@@ -8,6 +8,10 @@
   @return $map;
 }
 
+@function getGutterForBreakpoint($breakpoint) {
+	@return map.get(defaults.$sfg-breakpoints, $breakpoint, gutter);
+}
+
 @mixin mq($breakpoint-list) {
 	@each $mq-breakpoint in $breakpoint-list {
 		@if map.has-key(defaults.$sfg-breakpoints, $mq-breakpoint) {

@@ -1,7 +1,16 @@
-@use '_defaults.scss';
+$grid-prefix: '' !default;
+$grid-breakpoints: (
+	default: (
+		name: default,
+		columns: 12,
+		gutter: 24px
+	),
+) !default;
+
+@use '_defaults.scss' with (
+	$sfg-prefix: $grid-prefix,
+	$sfg-breakpoints: $grid-breakpoints
+);
 @use '_helpers.scss';
 @use '_mixins.scss';
 @use '_classes.scss';
-
-// expose mixins
-@forward 'helpers' show mq;
